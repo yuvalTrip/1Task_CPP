@@ -45,7 +45,7 @@ PAdptArray CreateAdptArray(COPY_FUNC CF, DEL_FUNC DF,PRINT_FUNC PF)//initialize 
     //initilize arr len to 0
     new_PAdptArr->arrLen=0;
 
-   return new_PAdptArr;
+    return new_PAdptArr;
 }
 
 void DeleteAdptArray(PAdptArray PAdptArr)//realese the memory of the object (include it is elements)
@@ -143,5 +143,3 @@ void PrintDB(PAdptArray PAdptArr)//print all elements in the array
         }
     }
 }
-
-
