@@ -142,7 +142,6 @@ void PrintDB(PAdptArray PAdptArr)//print all elements in the array
             continue;
         }
     }
-
 }
 
 
