@@ -14,7 +14,7 @@ typedef struct AdptArray_{
 } AdptArr, * PAdptArray;
 
 
-int GetAdptArraySize(PAdptArray arr)/////////.....................................................GOOD
+int GetAdptArraySize(PAdptArray arr)
 //return the size of the array.if the array is not initialized correctly, we will return -1
 {
     if(arr==NULL)//i.e the size is 0 (because NULL=0)
