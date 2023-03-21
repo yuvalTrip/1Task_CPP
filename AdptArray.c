@@ -13,7 +13,6 @@ typedef struct AdptArray_{
     int arrLen;
 } AdptArr, * PAdptArray;
 
-
 int GetAdptArraySize(PAdptArray arr)
 //return the size of the array.if the array is not initialized correctly, we will return -1
 {
@@ -142,4 +141,5 @@ void PrintDB(PAdptArray PAdptArr)//print all elements in the array
             continue;
         }
     }
+
 }
