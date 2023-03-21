@@ -3,4 +3,4 @@ project(1Task C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(1Task main.c)
+add_executable(1Task book.c book.h Person.c AdptArray.c Demo.c)
