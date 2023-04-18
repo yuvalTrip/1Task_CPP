@@ -47,7 +47,7 @@ PAdptArray CreateAdptArray(COPY_FUNC CF, DEL_FUNC DF,PRINT_FUNC PF)//initialize 
     return new_PAdptArr;
 }
 
-void DeleteAdptArray(PAdptArray PAdptArr)//realese the memory of the object (include it is elements)
+void DeleteAdptArray(PAdptArray PAdptArr)//free the memory of the object (include it is elements)
 {
     if(GetAdptArraySize(PAdptArr)==-1 || PAdptArr==NULL)//if the array is not initialized correctly
     {
@@ -60,29 +60,28 @@ void DeleteAdptArray(PAdptArray PAdptArr)//realese the memory of the object (inc
         {
             if (PAdptArr->PElemArr[i] != NULL)
             {
-                PAdptArr->del_func(PAdptArr->PElemArr[i]);
+                PAdptArr->del_func(PAdptArr->PElemArr[i]);// Delete element from the array
             }
         }
-        PAdptArr->arrLen=0;
-        free(PAdptArr->PElemArr);
-        free(PAdptArr);
+        PAdptArr->arrLen=0;//set len to 0
+        free(PAdptArr->PElemArr);// Free the head of the array
+        free(PAdptArr);// Free the struct
     }
 }
 
 Result SetAdptArrayAt(PAdptArray PAdptArr, int indx , PElement Pelement)
-{
+{//Sets the element at the given index in the array. If the given index is out of range, the array is resized accordingly.
     int len = PAdptArr->arrLen; // current size of the array
-
-    if (indx < len) // if the given index is in the range of the current array
+    if (indx < 0)
+    {
+        return FAIL;
+    }
+    else if (indx < len) // if the given index is in the range of the current array
     {
         if (PAdptArr->PElemArr[indx] != NULL) // if the index is used by another object, we will free the old object
         {
             PAdptArr->del_func(PAdptArr->PElemArr[indx]);
         }
-    }
-    else if (indx < 0)
-    {
-        return FAIL;
     }
     else // if the given index is not in the range of the current array
     {
@@ -133,7 +132,8 @@ void PrintDB(PAdptArray PAdptArr)//print all elements in the array
     {
         pre = temp;//move to the next index
         temp++;//increase temp_current to continue iterate over all elements
-        if (*pre!=NULL){
+        if (*pre!=NULL)
+        {
             PAdptArr->print_func(*pre);//use the proporate function to delete pre element from array
         }
         else
